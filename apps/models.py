@@ -46,3 +46,18 @@ class Place(models.Model):
 class Restaurant(Place):
     serves_hot_dogs = models.BooleanField(default=False)
     serves_pizza = models.BooleanField(default=False)
+
+# Proxy model
+
+
+class Person(models.Model):
+    """
+    They use the original models as an instance ans shared one table in database
+    """
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+
+
+class MyPerson(Person):
+    class Meta:
+        proxy = True
